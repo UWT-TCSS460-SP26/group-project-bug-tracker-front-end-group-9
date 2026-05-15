@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import {ChangeEvent, FormEvent} from "react";
 
 export default function BugReporter() {
   // --- Constants ---
@@ -17,7 +18,7 @@ export default function BugReporter() {
     title: '',
     description: '',
     severity: 'Minor',
-    contactEmail: ''
+    reporterEmail: ''
   });
   const [isLoading, setIsLoading] = useState(false);
   const [submittedSuccess, setSubmittedSuccess] = useState('none');
@@ -28,12 +29,12 @@ export default function BugReporter() {
    * @param {name} name - The name attribute of the input.
    * @param {value} value - The current value of the input.
    */
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: {target: { name: string, value: any } }) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
   
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
     
@@ -49,7 +50,7 @@ export default function BugReporter() {
         contactEmail: formData.reporterEmail
       };
       
-      await fetch(process.env.NEXT_PUBLIC_API_URL, {
+      await fetch(process.env.NEXT_PUBLIC_API_URL!, {
         method: 'POST',
         body: JSON.stringify(payload),
         headers: {
