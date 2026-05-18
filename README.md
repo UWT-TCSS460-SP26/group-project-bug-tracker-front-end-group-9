@@ -55,3 +55,7 @@ Then I moved to Claude Code, provided it the OpenAPI spec and CLAUDE.md, and it 
 The result was a working Next.js app I was able to interact with changing the severity level, adding a description, and entering an email all worked. The app had a basic Facebook-style color scheme: white background, blue buttons.
 
 What I'd do differently next time: I'd provide the agent with more specific code from the BE repo (an example request/response pair, or the relevant slice of the issues route handler) so it had a clearer picture of the actual route structure instead of inferring everything from the OpenAPI spec.
+
+## Saeed
+
+[AI Usage Report (PDF)](Esparza_AIUsage.pdf)
